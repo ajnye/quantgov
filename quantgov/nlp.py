@@ -38,6 +38,7 @@ if NLTK:
         nltk.pos_tag('A test.')
     except LookupError:
         nltk.download('averaged_perceptron_tagger')
+        nltk.download('punkt')
 
 commands = {}
 
