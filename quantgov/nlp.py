@@ -13,6 +13,9 @@ from pathlib import Path
 
 from . import utils
 
+global_path = Path(__file__).parent.parent
+
+
 try:
     import nltk.corpus
     from nltk import word_tokenize, sent_tokenize, bigrams, trigrams, pos_tag
@@ -348,7 +351,8 @@ class DesignWords:
         # load in design words
         # aka weights and measures, chemical compounds, etc.
         design_words = []
-        design_words_path = Path("quantgov/resources/design_words.txt")
+        design_words_path = global_path.joinpath("/quantgov/resources/"
+                                                 "design_words.txt")
         with design_words_path.open('r') as d:
             for l in d:
                 design_words.append(l.strip())
@@ -438,7 +442,8 @@ class PartsOfSpeech:
 
         # all tags
         all_tags = []
-        pos_tag_path = Path('quantgov/resources/nltk_pos_tags.txt')
+        pos_tag_path = global_path.joinpath('quantgov/resources/'
+                                            'nltk_pos_tags.txt')
         with pos_tag_path.open('r') as o:
             for x in o.readlines():
                 all_tags.append(x.split('|')[0])
