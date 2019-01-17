@@ -32,6 +32,7 @@ version = find_version("quantgov", "__init__.py")
 setup(
     name='quantgov',
     version=version,
+    include_package_data=True,
 
     description='A Policy Analytics Framework',
     long_description=long_description,

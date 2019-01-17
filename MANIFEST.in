@@ -1,0 +1,2 @@
+include quantgov/resources/design_words.txt
+include quantgov/resources/nltk_pos_tags.txt
