@@ -9,6 +9,7 @@ import collections
 import math
 
 from decorator import decorator
+from pathlib import Path
 
 from . import utils
 
@@ -347,7 +348,8 @@ class DesignWords:
         # load in design words
         # aka weights and measures, chemical compounds, etc.
         design_words = []
-        with open("quantgov/resources/design_words.txt", 'r') as d:
+        design_words_path = Path("quantgov/resources/design_words.txt")
+        with design_words_path.open('r') as d:
             for l in d:
                 design_words.append(l.strip())
         design_words = [x.lower().strip()
@@ -436,7 +438,8 @@ class PartsOfSpeech:
 
         # all tags
         all_tags = []
-        with open('quantgov/resources/nltk_pos_tags.txt', 'r') as o:
+        pos_tag_path = Path('quantgov/resources/nltk_pos_tags.txt')
+        with pos_tag_path.open('r') as o:
             for x in o.readlines():
                 all_tags.append(x.split('|')[0])
 
