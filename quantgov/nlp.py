@@ -431,7 +431,9 @@ class PartsOfSpeech:
     @staticmethod
     def get_columns(args):
         # column names to return
-        return ('', '', )
+        return ('noun_verb_ratio', 'nouns_count', 'verbs_count',
+                'nouns_ratio', 'verbs_ratio',
+                'proper_nouns_count', 'proper_nouns_ratio', )
 
     @staticmethod
     @check_nltk
