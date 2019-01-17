@@ -13,7 +13,7 @@ from pathlib import Path
 
 from . import utils
 
-global_path = Path(__file__).absolute().parent
+global_path = Path(__file__).resolve().parent
 
 
 try:
