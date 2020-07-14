@@ -138,6 +138,31 @@ class OccurrenceCounter():
             )
         return (doc.index + tuple(term_counts[i] for i in terms))
 
+    @staticmethod
+    def enhanced_xyz(doc) :
+        count = 0
+        
+        #If the regulations are in the format of "(.)" ((a) (1) etc.)
+        if re.search(r"\(.\)", s, re.IGNORECASE):
+            for line in doc.text.split() :
+                if line.startswith("(") and ":" not in line :
+                    count += 1
+        #If the regulations are in the format of ".\." (1. 2. etc.)
+        elif (re.search(r"\d\.", s, re.IGNORECASE)) :
+            for line in doc.text.split() :
+                if re.search(r"^.\.", line, re.IGNORECASE) :
+                    count += 1
+    #     #If the regulations are in the format of ":" in the preamble (must ensure: )
+    #     elif (re.search(r":", s, re.IGNORECASE)) :
+    #         for line in f :
+    #             pass
+        #Check with periods to distinguish regulation content (misc)
+        else :
+            for line in doc.text.split() :
+                if line is not "\n" and not str.isempty(line) and re.search(r"^[a-zA-z]", line, re.IGNORECASE):
+                    count += 1
+        return count
+
 
 commands['count_occurrences'] = OccurrenceCounter
 
